@@ -1,0 +1,11 @@
+streamlit
+pandas
+plotly
+streamlit-option-menu
+scikit-learn
+fpdf
+folium
+streamlit-folium
+geopy
+pytz
+numpy
