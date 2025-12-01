@@ -1,4 +1,3 @@
-# auth.py
 import hashlib
 import sqlite3
 from database import get_connection

@@ -1,4 +1,3 @@
-# database.py - BẢN ĐÃ FIX LỖI SYNTAX VÀ LỖI DỮ LIỆU
 import sqlite3
 import pandas as pd
 import hashlib

@@ -27,7 +27,6 @@ def create_database():
     ''')
     
     # 2. TABLE: INVENTORY (English Columns)
-    # Lưu ý: Tên cột đã được đổi sang Tiếng Anh để khớp với App mới
     c.execute('''
         CREATE TABLE IF NOT EXISTS inventory (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -43,7 +42,6 @@ def create_database():
     ''')
 
     # 3. TABLE: TRANSACTIONS (History/Audit Log)
-    # Bảng này cần thiết cho tính năng Lịch sử và AI Dự báo
     c.execute('''
         CREATE TABLE IF NOT EXISTS transactions (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -55,10 +53,6 @@ def create_database():
             note TEXT
         )
     ''')
-    
-    # --- DATA SEEDING ---
-    
-    # A. Create Users (Default Password: 123)
     hashed_pass = hash_password("123")
     
     users_data = [
@@ -73,16 +67,15 @@ def create_database():
     except sqlite3.IntegrityError:
         print("ℹ️ Users already exist.")
 
-    # B. Generate 50 Mock Products
     products = ["iPhone 15", "Samsung Galaxy", "MacBook Air", "Sony Headphone", "Dell XPS", "Logitech Mouse", "Mechanical Keyboard", "LG Monitor", "iPad Pro", "AirPods"]
     categories = ["Electronics", "Computers", "Accessories", "Gadgets"]
     
     inventory_data = []
     for _ in range(50):
-        name = f"{random.choice(products)} {random.randint(100, 999)}" # Ex: iPhone 15 101
+        name = f"{random.choice(products)} {random.randint(100, 999)}" 
         cat = random.choice(categories)
-        cost = random.randint(50, 2000) * 10000 # 500k to 20m
-        price = cost * random.uniform(1.2, 1.5) # Profit margin 20-50%
+        cost = random.randint(50, 2000) * 10000 
+        price = cost * random.uniform(1.2, 1.5) 
         stock = random.randint(0, 100)
         weight = round(random.uniform(0.1, 3.0), 1)
         
